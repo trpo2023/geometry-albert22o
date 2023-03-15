@@ -1,4 +1,4 @@
-#include <conio.h>
+
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +17,7 @@ int main()
     }
 
     int length = 0, element = 0;
-    while (true) {
+    while (1) {
         element = fgetc(file1);
         if (element == EOF)
             if (feof(file1) != 0)
@@ -27,8 +27,8 @@ int main()
 
     fclose(file1);
 
-    char b[] = "circle";
-    char c[] = "CIRCLE";
+    char b[] = "circle(";
+    char c[] = "CIRCLE(";
     char* a;
     a = (char*)(malloc(length * sizeof(char)));
     FILE* file;
@@ -41,9 +41,9 @@ int main()
     while (fgets(a, length + 1, file)) {
         printf("%s", a);
 
-        for (i = 0; i < 7; i++) {
-            if (a[i] != b[i] && a[i] != c[i] && i < 6) {
-                printf("Error at column %d: expected 'circle'\n", i);
+        for (i = 0; i < 8; i++) {
+            if (a[i] != b[i] && a[i] != c[i] && i < 7) {
+                printf("Error at column %d: expected 'circle' or '(' \n", i);
                 error = 1;
                 break;
             }
